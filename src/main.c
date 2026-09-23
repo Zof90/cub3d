@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/23 20:22:51 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:30:41 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,12 +135,12 @@ int	main(int argc, char **argv)
 	char	*fake_map[] = {"11111111", "10000001", "10100101", "10000001",
 			"11111111", NULL};
 
-	r.p.dir_x = 1.0;
+	r.p.dir_x = -1.0;
 	r.p.dir_y = 0.0;
-	r.p.pos_x = 1.5;
-	r.p.pos_y = 1.5;
-	r.p.plane_x = 0.0;
-	r.p.plane_y = 1.0;
+	r.p.pos_x = 3.5;
+	r.p.pos_y = 3.5;
+	r.p.plane_x = -r.p.dir_y;
+	r.p.plane_y = r.p.dir_x;
 	x = 0;
 	y = 0;
 	(void)argc;
