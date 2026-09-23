@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/23 20:07:12 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:22:51 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,10 @@ int	main(int argc, char **argv)
 
 	r.p.dir_x = 1.0;
 	r.p.dir_y = 0.0;
-	r.dir_x = 1.0;
-	r.dir_y = 0.0;
 	r.p.pos_x = 1.5;
 	r.p.pos_y = 1.5;
+	r.p.plane_x = 0.0;
+	r.p.plane_y = 1.0;
 	x = 0;
 	y = 0;
 	(void)argc;
@@ -181,7 +181,8 @@ int	main(int argc, char **argv)
 	while (x < 800)
 	{
 		r.camera_x = 2.0 * x / 800.0 - 1.0;
-		r.dir_y = r.camera_x;
+		r.dir_x = r.p.dir_x + r.p.plane_x * r.camera_x;
+		r.dir_y = r.p.dir_y + r.p.plane_y * r.camera_x;
 		dda(&r, fake_map);
 		draw_simple_wall(&img, x, r.perp, 0xFF0000);
 		x++;
