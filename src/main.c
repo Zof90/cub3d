@@ -6,10 +6,11 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/23 14:31:29 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:07:12 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cube3d.h"
 #include "mlx.h"
 #include <math.h>
 #include <stdbool.h>
@@ -62,9 +63,66 @@ void	draw_simple_wall(t_data *img, int x, double perp, int colors)
 		y++;
 	}
 }
-void dda()
+void	dda_int_steps(t_ray *r)
 {
-	
+	if (!r->dir_x)
+		r->delta_x = 1e30;
+	else
+		r->delta_x = fabs(1.0 / r->dir_x);
+	if (!r->dir_y)
+		r->delta_y = 1e30;
+	else
+		r->delta_y = fabs(1.0 / r->dir_y);
+	r->map_x = (int)r->p.pos_x;
+	r->map_y = (int)r->p.pos_y;
+	if (r->dir_x < 0)
+	{
+		r->step_x = -1;
+		r->side_x = (r->p.pos_x - r->map_x) * r->delta_x;
+	}
+	else
+	{
+		r->step_x = 1;
+		r->side_x = (r->map_x + 1.0 - r->p.pos_x) * r->delta_x;
+	}
+	if (r->dir_y < 0)
+	{
+		r->step_y = -1;
+		r->side_y = (r->p.pos_y - r->map_y) * r->delta_y;
+	}
+	else
+	{
+		r->step_y = 1;
+		r->side_y = (r->map_y + 1.0 - r->p.pos_y) * r->delta_y;
+	}
+}
+void	dda(t_ray *r, char **map)
+{
+	bool	hit;
+
+	hit = false;
+	dda_int_steps(r);
+	while (!hit)
+	{
+		if (r->side_x < r->side_y)
+		{
+			r->side_x += r->delta_x;
+			r->map_x += r->step_x;
+			r->side = 0;
+		}
+		else
+		{
+			r->side_y += r->delta_y;
+			r->map_y += r->step_y;
+			r->side = 1;
+		}
+		if (map[r->map_y][r->map_x] == '1')
+			hit = 1;
+	}
+	if (!r->side)
+		r->perp = r->side_x - r->delta_x;
+	else
+		r->perp = r->side_y - r->delta_y;
 }
 int	main(int argc, char **argv)
 {
@@ -73,96 +131,20 @@ int	main(int argc, char **argv)
 	void	*win_ptr;
 	int		y;
 	int		x;
+	t_ray	r;
 	char	*fake_map[] = {"11111111", "10000001", "10100101", "10000001",
 			"11111111", NULL};
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	delta_x;
-	double	delta_y;
-	double	side_x;
-	double	side_y;
-	double	perp;
-	double camera_x;
-	int		side;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	bool	hit;
 
-	(void)perp;
-	(void)side;
-	(void)side_x;
-	(void)side_y;
-	(void)step_x;
-	(void)step_y;
-	(void)dir_x;
-	(void)dir_y;
-	(void)fake_map;
-	(void)pos_x;
-	(void)pos_y;
-	(void)map_x;
-	(void)map_y;
-	(void)delta_x;
-	(void)delta_y;
+	r.p.dir_x = 1.0;
+	r.p.dir_y = 0.0;
+	r.dir_x = 1.0;
+	r.dir_y = 0.0;
+	r.p.pos_x = 1.5;
+	r.p.pos_y = 1.5;
+	x = 0;
+	y = 0;
 	(void)argc;
 	(void)argv;
-	(void)hit;
-	hit = false;
-	y = 0;
-	dir_x = 1.0;
-	dir_y = 0.0;
-	if (dir_x < 0)
-		step_x = -1;
-	else
-		step_x = 1;
-	if (dir_y < 0)
-		step_y = -1;
-	else
-		step_y = 1;
-	pos_x = 1.5;
-	pos_y = 1.5;
-	map_x = (int)pos_x;
-	map_y = (int)pos_y;
-	if (dir_x == 0)
-		delta_x = 1e30;
-	else
-		delta_x = fabs(1.0 / dir_x);
-	if (dir_y == 0)
-		delta_y = 1e30;
-	else
-		delta_y = fabs(1.0 / dir_y);
-	if (step_x < 0)
-		side_x = (pos_x - map_x) * delta_x;
-	else
-		side_x = (map_x + 1.0 - pos_x) * delta_x;
-	if (step_y < 0)
-		side_y = (pos_y - map_y) * delta_y;
-	else
-		side_y = (map_y + 1.0 - pos_y) * delta_y;
-	while (!hit)
-	{
-		if (side_x < side_y)
-		{
-			side_x += delta_x;
-			map_x += step_x;
-			side = 0;
-		}
-		else
-		{
-			side_y += delta_y;
-			map_y += step_y;
-			side = 1;
-		}
-		if (fake_map[map_y][map_x] == '1')
-			hit = true;
-	}
-	if (side == 0)
-		perp = side_x - delta_x;
-	else
-		perp = side_y - delta_y;
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
 		return (1);
@@ -198,9 +180,10 @@ int	main(int argc, char **argv)
 	x = 0;
 	while (x < 800)
 	{
-		camera_x = 2.0 * x / 800.0 - 1.0;
-		dir_y = camera_x;
-		draw_simple_wall(&img, x, perp, 0xFF0000);
+		r.camera_x = 2.0 * x / 800.0 - 1.0;
+		r.dir_y = r.camera_x;
+		dda(&r, fake_map);
+		draw_simple_wall(&img, x, r.perp, 0xFF0000);
 		x++;
 	}
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);

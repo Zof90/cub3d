@@ -6,13 +6,13 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/07 17:17:58 by schouite         ###   ########.fr        #
+#    Updated: 2026/09/23 16:21:43 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3D
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = 
 INCLUDES    = -Iincludes -Ilibft -Iminilibx-linux
 SRC_DIR     = src
 OBJ_DIR     = obj
