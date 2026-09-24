@@ -6,7 +6,7 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/23 16:21:43 by schouite         ###   ########.fr        #
+#    Updated: 2026/09/24 16:41:06 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,8 @@ MLX_FLAGS   = -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -l
 HEADER      = includes/cube3d.h
 
 # Liste de tes sources C
-CFILES      = $(SRC_DIR)/main.c 
-#               $(SRC_DIR)/render.c \
-#               $(SRC_DIR)/raycasting.c
+CFILES      = $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/raycasting.c
 
 # Transformation src/%.c -> obj/%.o
 OFILES      = $(CFILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

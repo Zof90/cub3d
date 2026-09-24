@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/23 19:59:47 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/24 16:35:56 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,7 @@ typedef struct s_ray
 	int			side;
 	t_player	p;
 }				t_ray;
+
+void	dda(t_ray *r, char **map);
+
 #endif
