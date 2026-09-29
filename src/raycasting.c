@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/24 16:35:37 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/29 17:29:29 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 static void	dda_int_steps(t_ray *r)
 {
+	r->map_x = (int)r->p.pos_x;
+	r->map_y = (int)r->p.pos_y;
 	if (!r->dir_x)
 		r->delta_x = 1e30;
 	else
@@ -24,8 +26,6 @@ static void	dda_int_steps(t_ray *r)
 		r->delta_y = 1e30;
 	else
 		r->delta_y = fabs(1.0 / r->dir_y);
-	r->map_x = (int)r->p.pos_x;
-	r->map_y = (int)r->p.pos_y;
 	if (r->dir_x < 0)
 	{
 		r->step_x = -1;
