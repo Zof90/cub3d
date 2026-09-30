@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesmar <julesmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/25 15:37:18 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 17:30:03 by julesmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ typedef struct s_data
 
 int	handle_key(int keycode, void *param)
 {
-	(void)param;
 	if (keycode == 65307)
+	{
+		free_game(param);
 		exit(0);
+	}
 	return (0);
 }
 void	my_mlx_put_to_pixel(t_data *img, int x, int y, int color)
@@ -72,19 +74,15 @@ int	main(int argc, char **argv)
 	int		y;
 	int		x;
 	t_ray	r;
-	char	*fake_map[] = {"11111111", "10000001", "10100101", "10000001",
-			"11111111", NULL};
+	t_game	game;
 
-	r.p.dir_x = -1.0;
-	r.p.dir_y = 0.0;
-	r.p.pos_x = 3.5;
-	r.p.pos_y = 3.5;
-	r.p.plane_x = -r.p.dir_y * 0.66;
-	r.p.plane_y = r.p.dir_x *0.66 ;
+	if (argc != 2)
+		return (parse_error("Usage: ./cub3D <scene.cub>"));
+	if (parse_file(argv[1], &game))
+		return (1);
+	r.p = game.player;
 	x = 0;
 	y = 0;
-	(void)argc;
-	(void)argv;
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
 		return (1);
@@ -101,7 +99,7 @@ int	main(int argc, char **argv)
 		x = 0;
 		while (x < 800)
 		{
-			my_mlx_put_to_pixel(&img, x, y, 0x0077B5FE);
+			my_mlx_put_to_pixel(&img, x, y, game.ceiling);
 			x++;
 		}
 		y++;
@@ -112,7 +110,7 @@ int	main(int argc, char **argv)
 		x = 0;
 		while (x < 800)
 		{
-			my_mlx_put_to_pixel(&img, x, y, 0x00F5F5F5);
+			my_mlx_put_to_pixel(&img, x, y, game.floor);
 			x++;
 		}
 		y++;
@@ -123,12 +121,12 @@ int	main(int argc, char **argv)
 		r.camera_x = 2.0 * x / 800.0 - 1.0;
 		r.dir_x = r.p.dir_x + r.p.plane_x * r.camera_x;
 		r.dir_y = r.p.dir_y + r.p.plane_y * r.camera_x;
-		dda(&r, fake_map);
+		dda(&r, game.map);
 		draw_simple_wall(&img, x, r.perp, 0xFF0000);
 		x++;
 	}
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	mlx_key_hook(win_ptr, handle_key, NULL);
+	mlx_key_hook(win_ptr, handle_key, &game);
 	mlx_loop(mlx_ptr);
 }
 
