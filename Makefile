@@ -6,7 +6,7 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/30 18:14:14 by schouite         ###   ########.fr        #
+#    Updated: 2026/09/30 18:29:58 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CFILES      = $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/parsing/parse_color.c \
 			  $(SRC_DIR)/parsing/parse_map.c \
 			  $(SRC_DIR)/parsing/parse_walls.c \
-			  $(SRC_DIR)/parsing/parse_utils.c
+			  $(SRC_DIR)/parsing/parse_utils.c \
 			  $(SRC_DIR)/raycasting.c \
 			  $(SRC_DIR)/render.c \
 			  $(SRC_DIR)/init.c \

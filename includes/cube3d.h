@@ -6,22 +6,20 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 18:09:45 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 19:15:56 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
-// typedef struct s_game
-// {
-// 	char		**map;
-// 	int			map_width;
-// 	int			map_height;
-// 	t_player	player;
-// }				t_game;
+# define READ_SIZE 4096
 # define WIDTH 800
 # define HEIGHT 600
+# define TEX_NO 0
+# define TEX_SO 1
+# define TEX_WE 2
+# define TEX_EA 3
 
 typedef struct s_data
 {
@@ -51,6 +49,7 @@ typedef struct s_game
 	int			floor;
 	int			ceiling;
 	t_player	player;
+	t_data		data;
 }				t_game;
 
 typedef struct s_ray
@@ -72,11 +71,24 @@ typedef struct s_ray
 }				t_ray;
 
 void			dda(t_ray *r, char **map);
+
+int				parse_file(char *path, t_game *game);
+int				parse_elements(char **lines, t_game *game);
+int				parse_color(char *s, int *dst);
+int				parse_map(char **lines, t_game *game);
+int				check_walls(t_game *game);
+char			*read_file(char *path);
+char			**split_lines(char *s);
+int				parse_error(char *msg);
+int				is_blank(char *line);
+int				has_extension(char *path, char *ext);
+void			free_tab(char **tab);
+void			free_game(t_game *game);
+void			dda(t_ray *r, char **map);
 int				handle_key(int keycode, void *param);
 void			draw_wall(t_data *img, int x, double perp, int colors);
 void			raycast(t_data *img);
-int				rendering(void);
+int				rendering(t_game *game);
 int				init_mlx(t_data *img, void **mlx_ptr, void **win_ptr);
 void			my_mlx_put_to_pixel(t_data *img, int x, int y, int color);
 #endif
-

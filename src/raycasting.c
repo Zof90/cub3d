@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 17:43:10 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 19:56:52 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	dda(t_ray *r, char **map)
 	else
 		r->perp = r->side_y - r->delta_y;
 }
-void	raycast(t_data *img)
+void	raycast(t_data *data)
 {
 	t_ray r;
 	int x;
@@ -96,7 +96,7 @@ void	raycast(t_data *img)
 		r.dir_x = r.p.dir_x + r.p.plane_x * r.camera_x;
 		r.dir_y = r.p.dir_y + r.p.plane_y * r.camera_x;
 		dda(&r, fake_map);
-		draw_wall(img, x, r.perp, 0xFF0000);
+		draw_wall(data, x, r.perp, 0xFF0000);
 		x++;
 	}
 }
