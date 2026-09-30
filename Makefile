@@ -6,13 +6,13 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/30 17:39:53 by schouite         ###   ########.fr        #
+#    Updated: 2026/09/30 18:14:14 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3D
 CC          = cc
-CFLAGS      = 
+CFLAGS      = -Wall -Wextra -Werror
 INCLUDES    = -Iincludes -Ilibft -Iminilibx-linux
 SRC_DIR     = src
 OBJ_DIR     = obj
@@ -27,6 +27,13 @@ HEADER      = includes/cube3d.h
 
 # Liste de tes sources C
 CFILES      = $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/parsing/parsing.c \
+			  $(SRC_DIR)/parsing/parse_read.c \
+			  $(SRC_DIR)/parsing/parse_elements.c \
+			  $(SRC_DIR)/parsing/parse_color.c \
+			  $(SRC_DIR)/parsing/parse_map.c \
+			  $(SRC_DIR)/parsing/parse_walls.c \
+			  $(SRC_DIR)/parsing/parse_utils.c
 			  $(SRC_DIR)/raycasting.c \
 			  $(SRC_DIR)/render.c \
 			  $(SRC_DIR)/init.c \

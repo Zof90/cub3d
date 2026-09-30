@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 17:39:20 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 18:09:45 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ typedef struct s_player
 	double		plane_y;
 }				t_player;
 
+typedef struct s_game
+{
+	char		**map;
+	int			map_width;
+	int			map_height;
+	char		*tex[4];
+	int			floor;
+	int			ceiling;
+	t_player	player;
+}				t_game;
+
 typedef struct s_ray
 {
 	double		dir_x;
@@ -68,3 +79,4 @@ int				rendering(void);
 int				init_mlx(t_data *img, void **mlx_ptr, void **win_ptr);
 void			my_mlx_put_to_pixel(t_data *img, int x, int y, int color);
 #endif
+
