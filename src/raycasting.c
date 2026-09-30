@@ -6,13 +6,14 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/29 17:29:29 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 15:26:55 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 static void	dda_int_steps(t_ray *r)
 {
@@ -49,7 +50,7 @@ static void	dda_int_steps(t_ray *r)
 }
 void	dda(t_ray *r, char **map)
 {
-	bool hit;
+	bool	hit;
 
 	hit = false;
 	dda_int_steps(r);
@@ -74,4 +75,28 @@ void	dda(t_ray *r, char **map)
 		r->perp = r->side_x - r->delta_x;
 	else
 		r->perp = r->side_y - r->delta_y;
+}
+void	raycast(t_data *img)
+{
+	t_ray r;
+	int x;
+
+	r.p.dir_x = -1.0;
+	r.p.dir_y = 0.0;
+	r.p.pos_x = 3.5;
+	r.p.pos_y = 3.5;
+	r.p.plane_x = -r.p.dir_y * 0.66;
+	r.p.plane_y = r.p.dir_x * 0.66;
+	char *fake_map[] = {"11111111", "10000001", "10100101", "10000001",
+		"11111111", NULL};
+	x = 0;
+	while (x < WIDTH)
+	{
+		r.camera_x = 2.0 * x / 800.0 - 1.0;
+		r.dir_x = r.p.dir_x + r.p.plane_x * r.camera_x;
+		r.dir_y = r.p.dir_y + r.p.plane_y * r.camera_x;
+		dda(&r, fake_map);
+		draw_wall(img, x, r.perp, 0xFF0000);
+		x++;
+	}
 }
