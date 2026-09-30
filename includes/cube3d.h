@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 15:28:03 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 17:39:20 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 // 	int			map_height;
 // 	t_player	player;
 // }				t_game;
-#define WIDTH 800
-#define HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 600
 
 typedef struct s_data
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_lenght;
-	int		endian;
-}			t_data;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_lenght;
+	int			endian;
+}				t_data;
 
 typedef struct s_player
 {
@@ -60,9 +60,11 @@ typedef struct s_ray
 	t_player	p;
 }				t_ray;
 
-void	dda(t_ray *r, char **map);
-int	handle_key(int keycode, void *param);
-void	draw_wall(t_data *img, int x, double perp, int colors);
-void	raycast(t_data *img);
-int	rendering(void);
+void			dda(t_ray *r, char **map);
+int				handle_key(int keycode, void *param);
+void			draw_wall(t_data *img, int x, double perp, int colors);
+void			raycast(t_data *img);
+int				rendering(void);
+int				init_mlx(t_data *img, void **mlx_ptr, void **win_ptr);
+void			my_mlx_put_to_pixel(t_data *img, int x, int y, int color);
 #endif

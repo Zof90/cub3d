@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 15:26:55 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 17:43:10 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	raycast(t_data *img)
 	t_ray r;
 	int x;
 
-	r.p.dir_x = -1.0;
-	r.p.dir_y = 0.0;
+	r.p.dir_x = 1;
+	r.p.dir_y = 0;
 	r.p.pos_x = 3.5;
 	r.p.pos_y = 3.5;
 	r.p.plane_x = -r.p.dir_y * 0.66;
 	r.p.plane_y = r.p.dir_x * 0.66;
-	char *fake_map[] = {"11111111", "10000001", "10100101", "10000001",
+	char *fake_map[] = {"11111111", "10100001", "10000101", "10000001",
 		"11111111", NULL};
 	x = 0;
 	while (x < WIDTH)

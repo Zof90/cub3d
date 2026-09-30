@@ -6,7 +6,7 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/30 15:31:12 by schouite         ###   ########.fr        #
+#    Updated: 2026/09/30 17:39:53 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ HEADER      = includes/cube3d.h
 CFILES      = $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/raycasting.c \
 			  $(SRC_DIR)/render.c \
+			  $(SRC_DIR)/init.c \
+			  $(SRC_DIR)/utils.c \
 			  $(SRC_DIR)/events.c
 
 # Transformation src/%.c -> obj/%.o

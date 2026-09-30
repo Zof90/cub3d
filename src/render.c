@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 15:45:04 by schouite         ###   ########.fr       */
+/*   Updated: 2026/09/30 17:38:11 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void	my_mlx_put_to_pixel(t_data *img, int x, int y, int color)
-{
-	char	*dst;
 
-	dst = img->addr + ((img->line_lenght * y) + (x * img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
 void	draw_wall(t_data *img, int x, double perp, int colors)
 {
 	int	line_h;
@@ -75,21 +69,7 @@ void	draw_floor_ceiling(t_data *img)
 		y++;
 	}
 }
-static int	init_mlx(t_data *img, void **mlx_ptr, void **win_ptr)
-{
-	*mlx_ptr = mlx_init();
-	if (!mlx_ptr)
-		return (0);
-	*win_ptr = mlx_new_window(*mlx_ptr, 800, 600, "cub3D");
-	if (win_ptr == NULL)
-		return (0);
-	img->img = mlx_new_image(*mlx_ptr, 800, 600);
-	if (!img->img)
-		return (0);
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_lenght,
-			&img->endian);
-	return (1);
-}
+
 int	rendering(void)
 {
 	t_data img;
