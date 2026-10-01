@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:57:13 by schouite         ###   ########.fr       */
+/*   Created: 2026/09/30 17:37:49 by schouite          #+#    #+#             */
+/*   Updated: 2026/10/01 16:47:14 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-// #include "mlx.h"
-// #include <math.h>
-#include <stdbool.h>
 
-int	main(int argc, char **argv)
+void	my_mlx_put_to_pixel(t_game *game, int x, int y, int pxl)
 {
-	t_game	game;
+	char *dst;
 
-	(void)argc;
-	(void)argv;
-	// if (argc != 2)
-	// 	return (parse_error("Usage: ./cub3D <scene.cub>"));
-	// if (parse_file(argv[1], &game))
-	// 	return (1);
-	rendering(&game);
+	dst = game->data.addr + ((game->data.line_lenght * y) + (x * game->data.bpp / 8));
+	*(unsigned int *)dst = pxl;
 }

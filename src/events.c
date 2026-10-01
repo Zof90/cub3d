@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:57:13 by schouite         ###   ########.fr       */
+/*   Created: 2026/09/29 18:36:55 by schouite          #+#    #+#             */
+/*   Updated: 2026/09/29 18:39:36 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-// #include "mlx.h"
-// #include <math.h>
-#include <stdbool.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+int	handle_key(int keycode, void *param)
 {
-	t_game	game;
-
-	(void)argc;
-	(void)argv;
-	// if (argc != 2)
-	// 	return (parse_error("Usage: ./cub3D <scene.cub>"));
-	// if (parse_file(argv[1], &game))
-	// 	return (1);
-	rendering(&game);
+	(void)param;
+	if (keycode == 65307)
+		exit(0);
+	return (0);
 }

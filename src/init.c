@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:57:13 by schouite         ###   ########.fr       */
+/*   Created: 2026/09/30 17:32:21 by schouite          #+#    #+#             */
+/*   Updated: 2026/09/30 19:55:13 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-// #include "mlx.h"
-// #include <math.h>
-#include <stdbool.h>
+#include "mlx.h"
 
-int	main(int argc, char **argv)
+int	init_mlx(t_data *data, void **mlx_ptr, void **win_ptr)
 {
-	t_game	game;
-
-	(void)argc;
-	(void)argv;
-	// if (argc != 2)
-	// 	return (parse_error("Usage: ./cub3D <scene.cub>"));
-	// if (parse_file(argv[1], &game))
-	// 	return (1);
-	rendering(&game);
+	*mlx_ptr = mlx_init();
+	if (!*mlx_ptr)
+		return (0);
+	*win_ptr = mlx_new_window(*mlx_ptr, 800, 600, "cub3D");
+	if (!*win_ptr)
+		return (0);
+	data->img = mlx_new_image(*mlx_ptr, 800, 600);
+	if (!data->img)
+		return (0);
+	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_lenght,
+			&data->endian);
+	return (1);
 }

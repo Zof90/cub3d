@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: julesmar <julesmar@student.42.fr>          +#+  +:+       +#+         #
+#    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/09/30 17:29:46 by julesmar         ###   ########.fr        #
+#    Updated: 2026/09/30 18:29:58 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,18 @@ HEADER      = includes/cube3d.h
 
 # Liste de tes sources C
 CFILES      = $(SRC_DIR)/main.c \
-			  $(SRC_DIR)/raycasting.c \
 			  $(SRC_DIR)/parsing/parsing.c \
 			  $(SRC_DIR)/parsing/parse_read.c \
 			  $(SRC_DIR)/parsing/parse_elements.c \
 			  $(SRC_DIR)/parsing/parse_color.c \
 			  $(SRC_DIR)/parsing/parse_map.c \
 			  $(SRC_DIR)/parsing/parse_walls.c \
-			  $(SRC_DIR)/parsing/parse_utils.c
+			  $(SRC_DIR)/parsing/parse_utils.c \
+			  $(SRC_DIR)/raycasting.c \
+			  $(SRC_DIR)/render.c \
+			  $(SRC_DIR)/init.c \
+			  $(SRC_DIR)/utils.c \
+			  $(SRC_DIR)/events.c
 
 # Transformation src/%.c -> obj/%.o
 OFILES      = $(CFILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
