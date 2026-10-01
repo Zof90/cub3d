@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 17:11:01 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/01 18:53:10 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	draw_floor_ceiling(t_game *game)
 
 	x = 0;
 	y = 0;
-	game->ceiling = 0xB8D8F0;
-	game->floor = 0x6B5A45;
 	while (y < (HEIGHT / 2))
 	{
 		x = 0;

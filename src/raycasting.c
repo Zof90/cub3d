@@ -6,14 +6,13 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 18:49:35 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/01 18:52:38 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include <math.h>
 #include <stdbool.h>
-#include <stdlib.h>
 
 static void	dda_int_steps(t_game *game)
 {
