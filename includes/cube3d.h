@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 16:46:50 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/01 18:43:20 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				is_blank(char *line);
 int				has_extension(char *path, char *ext);
 void			free_tab(char **tab);
 void			free_game(t_game *game);
-void			dda(t_game *game, char **map);
+void			dda(t_game *game);
 int				handle_key(int keycode, void *param);
 void			draw_wall(t_game *game, int x);
 void			raycast(t_game *game);

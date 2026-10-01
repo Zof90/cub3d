@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:57:13 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/01 18:48:17 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	// if (argc != 2)
-	// 	return (parse_error("Usage: ./cub3D <scene.cub>"));
-	// if (parse_file(argv[1], &game))
-	// 	return (1);
+	if (argc != 2)
+		return (parse_error("Usage: ./cub3D <scene.cub>"));
+	if (parse_file(argv[1], &game))
+		return (1);
 	rendering(&game);
 }
