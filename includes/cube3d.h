@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/05 21:31:07 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 22:00:03 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_game
 	t_player	player;
 	t_data		data;
 	t_ray		ray;
+	t_texture	texture[4];
 }				t_game;
 
 int				parse_file(char *path, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/05 21:25:42 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 21:41:25 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	raycast(t_game *game)
 	x = 0;
 	while (x < WIDTH)
 	{
-		
 		game->ray.camera_x = 2.0 * x / 800.0 - 1.0;
 		game->ray.dir_x = game->player.dir_x + game->player.plane_x
 			* game->ray.camera_x;

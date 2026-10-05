@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/05 21:24:57 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 21:48:12 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	rendering(t_game *game)
 	flag = init_mlx(&game->data, &mlx_ptr, &win_ptr);
 	if (!flag)
 		return (0);
+	
 	draw_floor_ceiling(game);
 	raycast(game);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, game->data.img, 0, 0);
