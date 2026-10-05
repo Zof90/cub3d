@@ -6,13 +6,16 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:32:21 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:55:13 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 21:32:19 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include "mlx.h"
-
+int int_texture(t_game *game)
+{
+	game->tex[0]= 
+}
 int	init_mlx(t_data *data, void **mlx_ptr, void **win_ptr)
 {
 	*mlx_ptr = mlx_init();

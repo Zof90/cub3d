@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 18:53:10 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 21:24:57 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,33 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+static int	get_tex(t_game *game, int y)
+{
+	int wall_y;
+	int ratio;
+	int tex_y;
+
+	ratio = game->wall.height;
+	wall_y = y - game->wall.start;
+	
+}
 void	draw_wall(t_game *game, int x)
 {
-	int	line_h;
-	int	start;
-	int	end;
-	int	height;
 	int	y;
+	int	pxl;
 
-	height = 600;
-	line_h = (int)height / game->ray.perp;
-	start = (height / 2) - (line_h / 2);
-	if (start < 0)
-		start = 0;
-	end = (height / 2) + (line_h / 2);
-	if (end > height - 1)
-		end = height - 1;
-	y = start;
-	while (y <= end)
+	game->wall.height = (int)HEIGHT / game->ray.perp;
+	game->wall.start = (HEIGHT / 2) - (game->wall.height / 2);
+	if (game->wall.start < 0)
+		game->wall.start = 0;
+	game->wall.end = (HEIGHT / 2) + (game->wall.height / 2);
+	if (game->wall.end > HEIGHT - 1)
+		game->wall.end = HEIGHT - 1;
+	y = game->wall.start;
+	while (y <= game->wall.end)
 	{
-		my_mlx_put_to_pixel(game, x, y, 0xFF0000);
+		pxl = get_tex(game,y);
+		my_mlx_put_to_pixel(game, x, y, pxl);
 		y++;
 	}
 }

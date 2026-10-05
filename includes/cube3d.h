@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 18:43:20 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/05 21:31:07 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@
 # define TEX_WE 2
 # define TEX_EA 3
 
+typedef struct s_pixel
+{
+	int			colore;
+	int			wall_y;
+	double		ratio;
+	int			tex_y;
+}				t_pixel;
+
+typedef struct s_wall
+{
+	int			height;
+	int			width;
+	int			start;
+	int			end;
+
+}				t_wall;
+
 typedef struct s_data
 {
 	void		*img;
@@ -29,6 +46,13 @@ typedef struct s_data
 	int			line_lenght;
 	int			endian;
 }				t_data;
+
+typedef struct s_texture
+{
+	int			width;
+	int			height;
+	t_data		data;
+}				t_texture;
 
 typedef struct s_ray
 {
@@ -65,6 +89,7 @@ typedef struct s_game
 	char		*tex[4];
 	int			floor;
 	int			ceiling;
+	t_wall		wall;
 	t_player	player;
 	t_data		data;
 	t_ray		ray;
