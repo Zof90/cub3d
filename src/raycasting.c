@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:33:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/05 21:41:25 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/06 20:00:04 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	dda(t_game *game)
 void	raycast(t_game *game)
 {
 	int	x;
-	
+
 	x = 0;
 	while (x < WIDTH)
 	{

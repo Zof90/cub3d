@@ -6,10 +6,11 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/05 22:00:03 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/06 20:14:30 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
@@ -83,6 +84,8 @@ typedef struct s_player
 
 typedef struct s_game
 {
+	void		*mlx_ptr;
+	void		*win_ptr;
 	char		**map;
 	int			map_width;
 	int			map_height;
@@ -96,6 +99,10 @@ typedef struct s_game
 	t_texture	texture[4];
 }				t_game;
 
+int				init_one_texture(t_game *game, int tex);
+int				init_texture(t_game *game);
+int				get_texture_face(t_game *game);
+int				get_texture_pixel(t_game *game, int tex_x, int tex_y, int face);
 int				parse_file(char *path, t_game *game);
 int				parse_elements(char **lines, t_game *game);
 int				parse_color(char *s, int *dst);
@@ -113,6 +120,6 @@ int				handle_key(int keycode, void *param);
 void			draw_wall(t_game *game, int x);
 void			raycast(t_game *game);
 int				rendering(t_game *game);
-int				init_mlx(t_data *img, void **mlx_ptr, void **win_ptr);
+int				init_mlx(t_game *game);
 void			my_mlx_put_to_pixel(t_game *game, int x, int y, int pxl);
 #endif
