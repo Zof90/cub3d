@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/06 20:15:37 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:28:59 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	get_tex_y(t_game *game, int y)
 {
 	int	wall_y;
 	int	tex_y;
-	int	ratio;
+	double	ratio;
 
 	tex_y = 0;
 	ratio = (double)game->wall.height / game->texture->height;
@@ -27,16 +27,28 @@ static int	get_tex_y(t_game *game, int y)
 	tex_y = wall_y / ratio;
 	return (tex_y);
 }
-static int	get_tex_x(t_game *game, int x)
+static int	get_tex_x(t_game *game, int face)
 {
-	int		wall_y;
+	double	wall_x;
+	int		wall_width;
+	double		ratio;
+	double		impact_y;
 	int		tex_x;
-	double	ratio;
 
-	tex_x = 0;
-	ratio = (double)game->wall.height / game->texture->height;
-	wall_y = x - game->wall.start;
-	tex_x = wall_y / ratio;
+	wall_width = 1;
+	ratio = (double)wall_width / game->texture[face].width;
+	if (game->ray.side == 0)
+	{
+		// printf("1\n");
+		impact_y = game->player.pos_y + (game->ray.perp * game->ray.dir_y);
+		wall_x = (double)impact_y - game->ray.map_y;
+	}
+	if (game->ray.side == 1)
+	{
+		impact_y = game->player.pos_x + (game->ray.perp * game->ray.dir_x);
+		wall_x = (double)impact_y - game->ray.map_x;
+	}
+	tex_x = wall_x / ratio;
 	return (tex_x);
 }
 void	draw_wall(t_game *game, int x)
@@ -56,8 +68,8 @@ void	draw_wall(t_game *game, int x)
 		game->wall.end = HEIGHT - 1;
 	y = game->wall.start;
 	face = get_texture_face(game);
-	tex_x = get_tex_x(game, x);
 	init_one_texture(game, face);
+	tex_x = get_tex_x(game, face);
 	while (y <= game->wall.end)
 	{
 		tex_y = get_tex_y(game, y);

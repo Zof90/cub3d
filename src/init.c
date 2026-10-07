@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:32:21 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/06 20:14:04 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 15:42:48 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,37 +58,3 @@ int	init_mlx(t_game *game)
 			&game->data.line_lenght, &game->data.endian);
 	return (1);
 }
-
-// game->texture[TEX_SO].data.img = mlx_xpm_file_to_image(mlx_ptr,
-// 		game->tex[TEX_SO], &game->texture[TEX_SO].width,
-// 		&game->texture[TEX_SO].height);
-// if (!game->texture[TEX_SO].data.img)
-// 	return (0);
-// game->texture[TEX_SO].data.addr = mlx_get_data_addr(game->texture[TEX_SO].data.img,
-// 		&game->texture[TEX_SO].data.bpp,
-// 		&game->texture[TEX_SO].data.line_lenght,
-// 		&game->texture[TEX_SO].data.endian);
-// if (!game->texture[TEX_SO].data.addr)
-// 	return (0);
-// game->texture[TEX_WE].data.img = mlx_xpm_file_to_image(mlx_ptr,
-// 		game->tex[TEX_WE], &game->texture[TEX_WE].width,
-// 		&game->texture[TEX_WE].height);
-// if (!game->texture[TEX_WE].data.img)
-// 	return (0);
-// game->texture[TEX_WE].data.addr = mlx_get_data_addr(game->texture[TEX_WE].data.img,
-// 		&game->texture[TEX_WE].data.bpp,
-// 		&game->texture[TEX_WE].data.line_lenght,
-// 		&game->texture[TEX_WE].data.endian);
-// if (!game->texture[TEX_WE].data.addr)
-// 	return (0);
-// game->texture[TEX_EA].data.img = mlx_xpm_file_to_image(mlx_ptr,
-// 		game->tex[TEX_EA], &game->texture[TEX_EA].width,
-// 		&game->texture[TEX_EA].height);
-// if (!game->texture[TEX_EA].data.img)
-// 	return (0);
-// game->texture[TEX_EA].data.addr = mlx_get_data_addr(game->texture[TEX_EA].data.img,
-// 		&game->texture[TEX_EA].data.bpp,
-// 		&game->texture[TEX_EA].data.line_lenght,
-// 		&game->texture[TEX_EA].data.endian);
-// if (!game->texture[TEX_EA].data.addr)
-// 	return (0);
