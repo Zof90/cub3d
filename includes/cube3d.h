@@ -6,11 +6,10 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:19:31 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/07 15:42:25 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:42:11 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
@@ -99,6 +98,7 @@ typedef struct s_game
 	t_texture	texture[4];
 }				t_game;
 
+void			dda_int_steps(t_game *game);
 int				init_one_texture(t_game *game, int tex);
 int				init_texture(t_game *game);
 int				get_texture_face(t_game *game);

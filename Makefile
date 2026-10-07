@@ -6,7 +6,7 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/10/06 19:54:12 by schouite         ###   ########.fr        #
+#    Updated: 2026/10/07 19:42:51 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CFILES      = $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/render.c \
 			  $(SRC_DIR)/render_helper.c \
 			  $(SRC_DIR)/init.c \
+			  $(SRC_DIR)/init_helper.c \
 			  $(SRC_DIR)/utils.c \
 			  $(SRC_DIR)/events.c
 

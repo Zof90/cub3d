@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:32:21 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/07 15:42:48 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:34:19 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 
 int	init_one_texture(t_game *game, int tex)
 {
-	game->texture[tex].data.img = mlx_xpm_file_to_image(game->mlx_ptr,
+	game->texture[tex].data.img = mlx_xpm_file_to_image(
+			game->mlx_ptr,
 			game->tex[tex], &game->texture[tex].width,
 			&game->texture[tex].height);
 	if (!game->texture[tex].data.img)
 		return (0);
-	game->texture[tex].data.addr = mlx_get_data_addr(game->texture[tex].data.img,
+	game->texture[tex].data.addr = mlx_get_data_addr(
+			game->texture[tex].data.img,
 			&game->texture[tex].data.bpp, &game->texture[tex].data.line_lenght,
 			&game->texture[tex].data.endian);
 	if (!game->texture[tex].data.addr)
 		return (0);
 	return (1);
 }
+
 int	init_texture(t_game *game)
 {
 	int		i;
@@ -43,6 +46,7 @@ int	init_texture(t_game *game)
 	}
 	return (1);
 }
+
 int	init_mlx(t_game *game)
 {
 	game->mlx_ptr = mlx_init();

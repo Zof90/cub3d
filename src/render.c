@@ -6,7 +6,7 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:00:25 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/07 19:28:59 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:43:57 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 static int	get_tex_y(t_game *game, int y)
 {
-	int	wall_y;
-	int	tex_y;
+	int		wall_y;
+	int		tex_y;
 	double	ratio;
 
 	tex_y = 0;
@@ -27,19 +27,19 @@ static int	get_tex_y(t_game *game, int y)
 	tex_y = wall_y / ratio;
 	return (tex_y);
 }
+
 static int	get_tex_x(t_game *game, int face)
 {
 	double	wall_x;
 	int		wall_width;
-	double		ratio;
-	double		impact_y;
+	double	ratio;
+	double	impact_y;
 	int		tex_x;
 
 	wall_width = 1;
 	ratio = (double)wall_width / game->texture[face].width;
 	if (game->ray.side == 0)
 	{
-		// printf("1\n");
 		impact_y = game->player.pos_y + (game->ray.perp * game->ray.dir_y);
 		wall_x = (double)impact_y - game->ray.map_y;
 	}
@@ -51,6 +51,7 @@ static int	get_tex_x(t_game *game, int face)
 	tex_x = wall_x / ratio;
 	return (tex_x);
 }
+
 void	draw_wall(t_game *game, int x)
 {
 	int	y;
