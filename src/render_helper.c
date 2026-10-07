@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 13:17:40 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/01 18:48:17 by schouite         ###   ########.fr       */
+/*   Created: 2026/10/06 19:41:42 by schouite          #+#    #+#             */
+/*   Updated: 2026/10/07 19:47:19 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-// #include "mlx.h"
-// #include <math.h>
-#include <stdbool.h>
 
-int	main(int argc, char **argv)
+int	get_texture_face(t_game *game)
 {
-	t_game	game;
+	int	face;
 
-	(void)argc;
-	(void)argv;
-	if (argc != 2)
-		return (parse_error("Usage: ./cub3D <scene.cub>"));
-	if (parse_file(argv[1], &game))
-		return (1);
-	rendering(&game);
+	if (game->ray.side == 0 && game->ray.step_x > 0)
+		face = TEX_WE;
+	else if (game->ray.side == 0 && game->ray.step_x < 0)
+		face = TEX_EA;
+	if (game->ray.side == 1 && game->ray.step_y > 0)
+		face = TEX_NO;
+	if (game->ray.side == 1 && game->ray.step_y < 0)
+		face = TEX_SO;
+	return (face);
 }

@@ -6,25 +6,59 @@
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:32:21 by schouite          #+#    #+#             */
-/*   Updated: 2026/09/30 19:55:13 by schouite         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:34:19 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include "mlx.h"
+#include "stdbool.h"
 
-int	init_mlx(t_data *data, void **mlx_ptr, void **win_ptr)
+int	init_one_texture(t_game *game, int tex)
 {
-	*mlx_ptr = mlx_init();
-	if (!*mlx_ptr)
+	game->texture[tex].data.img = mlx_xpm_file_to_image(
+			game->mlx_ptr,
+			game->tex[tex], &game->texture[tex].width,
+			&game->texture[tex].height);
+	if (!game->texture[tex].data.img)
 		return (0);
-	*win_ptr = mlx_new_window(*mlx_ptr, 800, 600, "cub3D");
-	if (!*win_ptr)
+	game->texture[tex].data.addr = mlx_get_data_addr(
+			game->texture[tex].data.img,
+			&game->texture[tex].data.bpp, &game->texture[tex].data.line_lenght,
+			&game->texture[tex].data.endian);
+	if (!game->texture[tex].data.addr)
 		return (0);
-	data->img = mlx_new_image(*mlx_ptr, 800, 600);
-	if (!data->img)
+	return (1);
+}
+
+int	init_texture(t_game *game)
+{
+	int		i;
+	bool	flag;
+
+	i = 0;
+	while (i < 4)
+	{
+		flag = init_one_texture(game, i);
+		if (!flag)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	init_mlx(t_game *game)
+{
+	game->mlx_ptr = mlx_init();
+	if (!game->mlx_ptr)
 		return (0);
-	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_lenght,
-			&data->endian);
+	game->win_ptr = mlx_new_window(game->mlx_ptr, 800, 600, "cub3D");
+	if (!game->win_ptr)
+		return (0);
+	game->data.img = mlx_new_image(game->mlx_ptr, 800, 600);
+	if (!game->data.img)
+		return (0);
+	game->data.addr = mlx_get_data_addr(game->data.img, &game->data.bpp,
+			&game->data.line_lenght, &game->data.endian);
 	return (1);
 }
