@@ -6,13 +6,13 @@
 #    By: schouite <schouite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/07 13:26:02 by schouite          #+#    #+#              #
-#    Updated: 2026/10/08 19:57:14 by schouite         ###   ########.fr        #
+#    Updated: 2026/10/09 18:31:22 by schouite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3D
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g
 INCLUDES    = -Iincludes -Ilibft -Iminilibx-linux
 SRC_DIR     = src
 OBJ_DIR     = obj
@@ -39,7 +39,8 @@ CFILES      = $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/rendering/render_helper.c \
 			  $(SRC_DIR)/rendering/utils.c \
 			  $(SRC_DIR)/initialisation/init.c \
-			  $(SRC_DIR)/initialisation//init_helper.c \
+			  $(SRC_DIR)/initialisation/init_helper.c \
+			  $(SRC_DIR)/free/free.c \
 			  $(SRC_DIR)/events.c
 
 # Transformation src/%.c -> obj/%.o

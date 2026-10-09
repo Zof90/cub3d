@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   render_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schouite <schouite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 18:36:55 by schouite          #+#    #+#             */
-/*   Updated: 2026/10/09 19:39:19 by schouite         ###   ########.fr       */
+/*   Created: 2026/10/06 19:41:42 by schouite          #+#    #+#             */
+/*   Updated: 2026/10/07 19:47:19 by schouite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-int	handle_key(int keycode, void *param)
+int	get_texture_face(t_game *game)
 {
-	t_game	*game;
+	int	face;
 
-	(void)game;
-	game = (t_game *)param;
-	if (keycode == 65307)
-	{
-		close_game(game);
-		exit(0);
-	}
-	return (0);
+	if (game->ray.side == 0 && game->ray.step_x > 0)
+		face = TEX_WE;
+	else if (game->ray.side == 0 && game->ray.step_x < 0)
+		face = TEX_EA;
+	if (game->ray.side == 1 && game->ray.step_y > 0)
+		face = TEX_NO;
+	if (game->ray.side == 1 && game->ray.step_y < 0)
+		face = TEX_SO;
+	return (face);
 }
